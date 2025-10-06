@@ -1,6 +1,6 @@
 import React from "react";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import PrivacyPolicy from "@/components/Auth/PrivacyPolicy";
+import PrivacyPolicy from "@/components/Auth/PrivacyPolicy/Index";
 
 export const metadata = {
   title: "Privacy Policy",

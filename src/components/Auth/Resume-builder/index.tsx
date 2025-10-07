@@ -26,7 +26,7 @@ const ResumeBuilder = () => {
           {/* Image */}
           <div className="md:w-1/2">
             <Image
-              src="images/resume.png" // <-- change to your actual image path
+              src="/images/resume.png"
               alt="Resume Builder"
               width={600}
               height={400}

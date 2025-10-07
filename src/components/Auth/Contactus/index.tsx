@@ -19,7 +19,7 @@ const ContactUs = () => {
           {/* Left side image */}
           <div className="w-full">
             <Image
-              src="images/contactus.png" // replace with your image
+              src="/images/contactus.png"
               alt="Support"
               width={500}
               height={500}

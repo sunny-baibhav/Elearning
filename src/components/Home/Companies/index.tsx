@@ -52,14 +52,22 @@ const Companies = () => {
     };
 
     return (
-        <section className='text-center' >
+        <section className='text-center py-8 lg:py-16' >
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
-                <h2 className="text-midnight_text text-2xl font-semibold">Trusted by companies of all sizes</h2>
-                <div className="py-14 border-b ">
+                <h2 className="text-midnight_text text-xl sm:text-2xl lg:text-3xl font-semibold mb-8 lg:mb-12">Trusted by companies of all sizes</h2>
+                <div className="py-8 lg:py-14 border-b">
                     <Slider {...settings}>
                         {TruestedCompanies.map((item, i) =>
-                            <div key={i}>
-                                <Image src={`${getImagePrefix()}${item.imgSrc}`} alt={item.imgSrc} width={116} height={36} />
+                            <div key={i} className="px-2">
+                                <div className="flex items-center justify-center h-16 lg:h-20">
+                                    <Image 
+                                        src={`${getImagePrefix()}${item.imgSrc}`} 
+                                        alt={item.imgSrc} 
+                                        width={116} 
+                                        height={36} 
+                                        className="max-h-12 lg:max-h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                                    />
+                                </div>
                             </div>
                         )}
                     </Slider>

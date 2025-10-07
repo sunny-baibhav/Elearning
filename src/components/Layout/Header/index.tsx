@@ -138,12 +138,14 @@ const Header: React.FC = () => {
             </Link> */}
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className="block lg:hidden p-2 rounded-lg"
+              className="block lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               aria-label="Toggle mobile menu"
             >
-              <span className="block w-6 h-0.5 bg-black"></span>
-              <span className="block w-6 h-0.5 bg-black mt-1.5"></span>
-              <span className="block w-6 h-0.5 bg-black mt-1.5"></span>
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${navbarOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${navbarOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${navbarOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+              </div>
             </button>
           </div>
         </div>
@@ -235,50 +237,66 @@ const Header: React.FC = () => {
         )}
         <div
           ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-darkmode shadow-lg transform transition-transform duration-300 max-w-xs ${
+          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkmode shadow-lg transform transition-transform duration-300 max-w-sm ${
             navbarOpen ? "translate-x-0" : "translate-x-full"
           } z-50`}
         >
-          <div className="flex items-center justify-between p-4">
-            <h2 className="text-lg font-bold">
+          <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="text-lg font-bold">
               <Logo />
-            </h2>
+            </div>
             <button
               onClick={() => setNavbarOpen(false)}
-              className="bg-[url('/images/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
-              aria-label="Close menu Modal"
-            ></button>
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <nav className="flex flex-col items-start p-4">
+          <nav className="flex flex-col items-start p-6 overflow-y-auto">
             {headerData.map((item, index) => (
               <MobileHeaderLink key={index} item={item} />
             ))}
-            <div className="mt-4 flex flex-col space-y-4 w-full">
+            <div className="mt-6 flex flex-col space-y-3 w-full px-4">
               <Link
                 href="#"
-                className="hidden lg:block bg-primary text-white hover:bg-primary/90 px-6 py-2 rounded-full text-base font-medium"
-                onClick={() => setIsSignInOpen(true)}
+                className="block bg-primary text-white hover:bg-primary/90 px-6 py-3 rounded-full text-base font-medium text-center transition-colors"
+                onClick={() => {
+                  setIsSignInOpen(true);
+                  setNavbarOpen(false);
+                }}
               >
                 Sign In
               </Link>
               <Link
                 href="#"
-                className="hidden lg:block bg-purple-100 text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full text-base font-medium"
-                onClick={() => setIsSignUpOpen(true)}
+                className="block bg-primary/15 text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full text-base font-medium text-center transition-colors"
+                onClick={() => {
+                  setIsSignUpOpen(true);
+                  setNavbarOpen(false);
+                }}
               >
                 Sign Up
               </Link>
               <Link
                 href="#"
-                className="hidden lg:block bg-yellow-100 text-yellow-900 hover:bg-yellow-300 hover:text-black px-6 py-2 rounded-full text-base font-medium"
-                onClick={() => setIsStudentOpen(true)}
+                className="block bg-yellow-100 text-yellow-900 hover:bg-yellow-300 hover:text-black px-6 py-3 rounded-full text-base font-medium text-center transition-colors"
+                onClick={() => {
+                  setIsStudentOpen(true);
+                  setNavbarOpen(false);
+                }}
               >
                 Student
               </Link>
               <Link
                 href="#"
-                className="hidden lg:block bg-green-100 text-green-900 hover:bg-green-300 hover:text-black px-6 py-2 rounded-full text-base font-medium"
-                onClick={() => setIsEmployeeOpen(true)}
+                className="block bg-green-100 text-green-900 hover:bg-green-300 hover:text-black px-6 py-3 rounded-full text-base font-medium text-center transition-colors"
+                onClick={() => {
+                  setIsEmployeeOpen(true);
+                  setNavbarOpen(false);
+                }}
               >
                 Employee
               </Link>

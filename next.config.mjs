@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-const isVercel = !!process.env.VERCEL; // true on Vercel deployments
+const isVercel = !!process.env.VERCEL || !!process.env.VERCEL_URL;
+const isGitHubPages = isProd && process.env.GITHUB_ACTIONS && !isVercel;
 
-// Use GitHub Pages-style config ONLY when building for static hosting (not on Vercel)
-const useStaticExport = isProd && !isVercel;
+// Use GitHub Pages-style config ONLY when building for GitHub Pages
+const useStaticExport = isGitHubPages;
 
 const nextConfig = {
   basePath: useStaticExport ? "/E-learning" : "",
